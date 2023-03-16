@@ -1,29 +1,14 @@
-# Hello cloud native Flask
+# Hello Helm
 
-In this example skeleton Flask application is provided with Prometheus
-metrics endpoint.
+This Git repository can be used as Helm repository to deploy
+[hello-flask](https://github.com/codemowers/hello-flask) application:
 
-Steps to take with this repository:
+* Override `hostname` parameter to have unique URL for the application
+* Override `greeting` parameter to have unique greeting
 
-* Fork this repository to your personal GitHub
-* Clone the forked repository to your machine
-* Obtain sandbox environment from https://dashboard.codemowers.eu/
-* Follow the instructions on the page regarding `~/.kube/config` reconfiguration
-* Execute the `skaffold dev ...` command provided on the sandbox detailed view
-  page to build and deploy the application in the remote cluster sandbox
-* Proceed to build your awesome Flask application
+To use custom Docker image:
 
-# Building and running locally
-
-With vanilla Docker
-
-```
-docker build . -t hello-flask:latest
-docker run --network host -it hello-flask:latest
-```
-
-With `docker-compose`:
-
-```
-docker-compose up --build
-```
+* Fork [hello-flask](https://github.com/codemowers/hello-flask) under your GitHub account
+* Hit `Sync` at [Drone](https://drone.codemowers.eu/) and trigger build for the
+  forked Git repository
+* Override `image` parameter to use freshly built image

@@ -1,0 +1,3 @@
+greeting: Greetings from Helm
+hostname: hello-helm-laurivosandi
+image: harbor.codemowers.eu/laurivosandi/hello-flask:latest
