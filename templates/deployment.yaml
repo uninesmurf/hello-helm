@@ -13,12 +13,19 @@ spec:
       labels:
         app: hello-flask
     spec:
+      securityContext:
+         runAsuser: 1000
+         runAsGroup: 3000
+         fsGroup: 2000
+         fsGroupChangePolicy: "OnRootMismatch"
       enableServiceLinks: false
       imagePullSecrets:
         - name: regcred
       containers:
         - name: hello-flask
           image: {{ .Values.image }}
+          securityContext:
+            readOnlyRootFilesystem: true
           command:
             - /app/app.py
             - {{ .Values.greeting }}
